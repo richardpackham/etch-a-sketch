@@ -34,8 +34,10 @@ function squareDimensions(number){
 function addStyles(dimension){
     var styles = `
     .col{
-        width:${dimension}vw;
-        height: ${dimension}vw;
+        display:flex;
+        width:${dimension}%;
+        height: ${dimension}%;
+        aspect-ratio:1;
     }
 `
 var styleSheet = document.createElement("style")
@@ -49,16 +51,43 @@ document.head.appendChild(styleSheet)
 // }
 
 function hover(){
-   this.classList.toggle("hover")
+   this.classList.toggle("hover");
+   let opacity = (this.style.opacity);
+   console.log(opacity)
+   if ( opacity == "1" ){
+    return;
+   }
+   else{
+    opacity = opacity * 10 
+    opacity += 1
+    opacity = opacity/10
+    this.style.opacity=opacity
+    console.log(opacity)
+   }
 }
+
+function changeSize(){
+    let choice = prompt("How many squares?");
+    if ((choice.isNan) || (parseInt(choice) > 100)){
+        return
+    }
+    else{
+        resetGrid()
+        createGrid(parseInt(choice))
+    }
+}
+
+function resetGrid(){
+    document.querySelector('#container').innerHTML="";
+};
+
 
 document.querySelector('#container').addEventListener('click', function(event){
     if (event.target.classList.contains("col")){
-      // do your action on your 'li' or whatever it is you're listening for
-      console.log("yo");
-      hover()
+       hover()
     }
   });
 
+document.querySelector('#changeSize').addEventListener('click', changeSize);
 
 createGrid(16)

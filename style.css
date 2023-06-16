@@ -1,0 +1,9 @@
+.row{
+    display:flex;
+}
+.hover{
+    background-color:grey;
+}
+.col{
+    background-color:white;
+}

@@ -58,9 +58,9 @@ function hover(){
     return;
    }
    else{
-    opacity = opacity * 10 
-    opacity += 1
-    opacity = opacity/10
+    opacity = opacity * 100 
+    opacity += 5
+    opacity = opacity/100
     this.style.opacity=opacity
     console.log(opacity)
    }
